@@ -1,0 +1,13 @@
+/__pycache__
+/D:
+**/.git
+**/.gitignore
+**/.vscode
+**/coverage
+**/.env
+**/.aws
+**/.ssh
+**/venv
+Dockerfile
+README.md
+docker-compose.yml
