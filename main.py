@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+
+
 from core.config import settings
 from core.middlewares.log_middleware import OperateLogMiddleware
 from life import lifespan
 from routers import register_router
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-
 
 
 def register_middleware(app: FastAPI) -> FastAPI:
@@ -32,7 +33,7 @@ def create_app() -> FastAPI:
     app = FastAPI(lifespan=lifespan)
 
     register_router(app)
-    
+
     register_middleware(app)
         
     # 挂载静态文件

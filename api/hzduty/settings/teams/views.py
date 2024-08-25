@@ -1,23 +1,15 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy import select
+from api.hzduty.settings.teams.schemas import  Response
 from core.database import HZDUTY
-from models.hzduty.mdoel import D01值班班次类型
-
+from .crud import query_teams
+from .model import *
+from ..classes.interface import OrgID
 
 router = APIRouter(tags=["班组管理"])
-
-
-@router.post(
-    "/add",
-    summary="创建值班班组",
-)
-async def add_duty_team(db=Depends(HZDUTY.session)):
-    """
-    创建值班班组
-    根据组织ID创建一个值班班组
-    @param db: 数据库会话
-    @return: 创建的班组信息
-    """
-    query = select(D01值班班次类型)
-    r = await db.scalars(query)
-    return r.all()
+@router.post("/teams_type/",
+             summary="读取")
+async def query_teams1(id:OrgID ,db=Depends(HZDUTY.session)):
+    zone_id=id.组织ID
+    teams_type = await query_teams(zone_id=zone_id, db=db)
+    response = Response(code="000000", data=teams_type, message="操作成功")
+    return response

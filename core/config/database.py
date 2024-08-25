@@ -13,15 +13,15 @@ class RelationalDB(BaseModel):
     """数据库配置"""
 
     TYPE: Literal["mysql", "dameng"] = "mysql"
-    HOST: str = "db"
+    HOST: str = "192.168.1.254"
     PORT: int = 3306
     USER: str = "root"
-    PASSWORD: str = "root"
+    PASSWORD: str = "123456"
     CHARSET: str = "utf8mb4"
     AUTO_COMMIT: bool = True
     POOL_SIZE: int = 50
     CONNECT_TIMEOUT: int = 3
-    DATABASE: str = "db"
+    DATABASE: str = "test"
     ECHO: bool = False
 
 

@@ -20,7 +20,7 @@ def get_description() -> str:
     获取项目的描述信息作为文档目录
     """
     description = ""
-    with open("readme.md", "r") as f:
+    with open("readme.md", "r", encoding='utf-8') as f:
         description = f.read()
     return description
 
